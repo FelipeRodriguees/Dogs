@@ -6,7 +6,7 @@ import { UserContext } from '../../../UserContext';
 import { useContext } from 'react';
 
 const LoginForm = () => {
-  const { userLogin, data } = useContext(UserContext);
+  const { userLogin, error, isLoading } = useContext(UserContext);
   const username = useForm(true);
   const password = useForm(true);
 
@@ -23,7 +23,12 @@ const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <Input label="Usuario" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
-        <Button>Entrar</Button>
+        {isLoading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+        {error && <p>{error}</p>}
       </form>
       <Link to="/login/create">Novo usuario</Link>
     </section>

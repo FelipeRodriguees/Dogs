@@ -13,6 +13,18 @@ export function TOKEN_REQUEST(body) {
   };
 }
 
+export function VALIDATE_TOKEN(token) {
+  return {
+    url: `${API_URL}/jwt-auth/v1/token/validate`,
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  };
+}
+
 export function USER_GET_REQUEST(token) {
   return {
     url: `${API_URL}/api/user`,
