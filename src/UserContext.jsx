@@ -49,6 +49,7 @@ export const UserStorage = ({ children }) => {
         }
       }
     }
+    autoLogin();
   }, [userLogout]);
 
   async function userLogin(username, password) {
