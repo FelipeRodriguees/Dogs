@@ -5,6 +5,7 @@ import CreateAccount from './create-account/CreateAccount';
 import PasswordRecover from './password-recover/PasswordRecover';
 import PasswordReset from './password-reset/PasswordReset';
 import { UserContext } from '../../UserContext';
+import styles from './Login.module.css';
 
 const Login = () => {
   const { isLogged } = useContext(UserContext);
@@ -12,14 +13,16 @@ const Login = () => {
   if (isLogged) return <Navigate to="/account" />;
 
   return (
-    <div>
-      <Routes>
-        <Route path="/" end element={<LoginForm />} />
-        <Route path="create" element={<CreateAccount />} />
-        <Route path="recover" element={<PasswordRecover />} />
-        <Route path="reset" element={<PasswordReset />} />
-      </Routes>
-    </div>
+    <section className={styles.login}>
+      <div className={styles.forms}>
+        <Routes>
+          <Route path="/" end element={<LoginForm />} />
+          <Route path="create" element={<CreateAccount />} />
+          <Route path="recover" element={<PasswordRecover />} />
+          <Route path="reset" element={<PasswordReset />} />
+        </Routes>
+      </div>
+    </section>
   );
 };
 
