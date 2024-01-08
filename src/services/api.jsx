@@ -38,6 +38,7 @@ export function USER_GET_REQUEST(token) {
 }
 
 export function CREATE_USER(body) {
+  console.log(body);
   return {
     url: `${API_URL}/api/user`,
     options: {
