@@ -6,7 +6,7 @@ import Header from './views/header/Header';
 import Login from './views/login/Login';
 import { UserStorage } from './UserContext';
 import LoginRouterMenager from './components/helper/LoginRouterMenager';
-import User from './views/user/User';
+import UserPage from './views/user-page/UserPage';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
               path="account/*"
               element={
                 <LoginRouterMenager>
-                  <User />
+                  <UserPage />
                 </LoginRouterMenager>
               }
             />
