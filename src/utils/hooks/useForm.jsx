@@ -11,6 +11,10 @@ const validTypes = {
     messageError:
       'A senha precisa de ter um digito, uma letra minuscula e uma maiuscula, e ter no ao menos 8 caracteres!',
   },
+  number: {
+    regex: /\d+$/,
+    messageError: 'Utilize apenas números',
+  },
 };
 
 const useForm = (type) => {

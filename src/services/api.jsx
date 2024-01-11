@@ -38,7 +38,6 @@ export function USER_GET_REQUEST(token) {
 }
 
 export function CREATE_USER(body) {
-  console.log(body);
   return {
     url: `${API_URL}/api/user`,
     options: {
@@ -47,6 +46,21 @@ export function CREATE_USER(body) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
+    },
+  };
+}
+
+export function NEW_POST(formData, token) {
+  console.log(formData);
+  console.log(token);
+  return {
+    url: `${API_URL}/api/photo`,
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
     },
   };
 }
