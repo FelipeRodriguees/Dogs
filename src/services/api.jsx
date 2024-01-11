@@ -51,8 +51,6 @@ export function CREATE_USER(body) {
 }
 
 export function NEW_POST(formData, token) {
-  console.log(formData);
-  console.log(token);
   return {
     url: `${API_URL}/api/photo`,
     options: {
@@ -61,6 +59,16 @@ export function NEW_POST(formData, token) {
         Authorization: `Bearer ${token}`,
       },
       body: formData,
+    },
+  };
+}
+
+export function FIND_POSTS({ page, totalItems, user }) {
+  return {
+    url: `${API_URL}/api/photo/?_page=${page}&_total=${totalItems}&_user=${user}`,
+    options: {
+      method: 'GET',
+      cache: 'no-store',
     },
   };
 }
