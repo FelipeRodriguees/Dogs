@@ -72,3 +72,12 @@ export function FIND_POSTS({ page, totalItems, user }) {
     },
   };
 }
+
+export function FIND_PHOTO(id) {
+  return {
+    url: `${API_URL}/api/photo/${id}`,
+    options: {
+      cache: 'no-store',
+    },
+  };
+}
