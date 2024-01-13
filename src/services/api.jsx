@@ -4,9 +4,9 @@ export function TOKEN_REQUEST(body) {
   return {
     url: `${API_URL}/jwt-auth/v1/token`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     },
@@ -17,7 +17,7 @@ export function VALIDATE_TOKEN(token) {
   return {
     url: `${API_URL}/jwt-auth/v1/token/validate`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -29,7 +29,7 @@ export function USER_GET_REQUEST(token) {
   return {
     url: `${API_URL}/api/user`,
     options: {
-      method: 'GET',
+      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -41,9 +41,9 @@ export function CREATE_USER(body) {
   return {
     url: `${API_URL}/api/user`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     },
@@ -54,7 +54,7 @@ export function NEW_POST(formData, token) {
   return {
     url: `${API_URL}/api/photo`,
     options: {
-      method: 'POST',
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -67,8 +67,8 @@ export function FIND_POSTS({ page, totalItems, user }) {
   return {
     url: `${API_URL}/api/photo/?_page=${page}&_total=${totalItems}&_user=${user}`,
     options: {
-      method: 'GET',
-      cache: 'no-store',
+      method: "GET",
+      cache: "no-store",
     },
   };
 }
@@ -77,7 +77,21 @@ export function FIND_PHOTO(id) {
   return {
     url: `${API_URL}/api/photo/${id}`,
     options: {
-      cache: 'no-store',
+      cache: "no-store",
+    },
+  };
+}
+
+export function SEND_COMMENT(id, token, comment) {
+  return {
+    url: `${API_URL}/api/comment/${id}`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(comment),
     },
   };
 }
