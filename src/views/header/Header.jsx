@@ -1,8 +1,8 @@
-import styles from './Header.module.css';
-import { Link } from 'react-router-dom';
-import Dogs from '/src/assets/dogs.svg?react';
-import { useContext } from 'react';
-import { UserContext } from '../../UserContext';
+import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
+import Dogs from "/src/assets/dogs.svg?react";
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
 
 const Header = () => {
   const { data } = useContext(UserContext);
@@ -10,11 +10,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
-        <Link className={styles.logo} to="/" aria-label="Dogs - Hoome">
+        <Link className={styles.logo} to="/" aria-label="Dogs - Home">
           <Dogs />
         </Link>
         {data ? (
-          <Link className={styles.login} to="/conta">
+          <Link className={styles.login} to="/account">
             {data.nome}
           </Link>
         ) : (
