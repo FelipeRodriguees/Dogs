@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import FeedItem from '../feed-item/FeedItem';
-import useFetch from '../../../../utils/hooks/useFetch';
-import { FIND_POSTS } from '../../../../services/api.jsx';
-import ErrorMessage from '../../../../components/helper/ErrorMessage.jsx';
-import Loader from '../../../../components/helper/Loader.jsx';
-import styles from './FeedPhotos.module.css';
+import React, { useEffect } from "react";
+import FeedItem from "../feed-item/FeedItem";
+import useFetch from "../../../../utils/hooks/useFetch";
+import { FIND_POSTS } from "../../../../services/api.jsx";
+import ErrorMessage from "../../../../components/helper/ErrorMessage.jsx";
+import Loader from "../../../../components/helper/loader/Loader.jsx";
+import styles from "./FeedPhotos.module.css";
 
 const FeedPhotos = ({ setModalPhoto }) => {
   const { data, isLoading, error, request } = useFetch();
