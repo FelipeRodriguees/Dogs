@@ -8,6 +8,8 @@ import { UserStorage } from "./UserContext";
 import LoginRouterMenager from "./components/helper/LoginRouterMenager";
 import UserPage from "./views/user-page/UserPage";
 import Photo from "./views/photo/Photo";
+import Profile from "./views/user-page/profile/Profile";
+import NotFound from "./views/not-found/NotFound";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
               }
             />
             <Route path="photo/:id" element={<Photo />} />
+            <Route path="profile/:user" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </UserStorage>
