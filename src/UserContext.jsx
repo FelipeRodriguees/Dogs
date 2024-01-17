@@ -1,10 +1,10 @@
-import { createContext, useCallback, useEffect, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from "react";
 import {
   TOKEN_REQUEST,
   USER_GET_REQUEST,
   VALIDATE_TOKEN,
-} from './services/api';
-import { useNavigate } from 'react-router-dom';
+} from "./services/api";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
@@ -16,17 +16,16 @@ export const UserStorage = ({ children }) => {
   const navigate = useNavigate();
 
   const userLogout = useCallback(async function () {
-    console.log('exit');
     setData(null);
     setError(null);
     setIsLoading(false);
     setIsLogged(false);
-    window.localStorage.removeItem('token');
+    window.localStorage.removeItem("token");
   }, []);
 
   useEffect(() => {
     async function autoLogin() {
-      const token = window.localStorage.getItem('token');
+      const token = window.localStorage.getItem("token");
 
       if (token) {
         try {
@@ -35,7 +34,7 @@ export const UserStorage = ({ children }) => {
           const { url, options } = VALIDATE_TOKEN(token);
           const request = await fetch(url, options);
 
-          if (!request.ok) throw new Error('Invalid token!');
+          if (!request.ok) throw new Error("Invalid token!");
 
           await getUser(token);
         } catch (error) {
@@ -58,9 +57,9 @@ export const UserStorage = ({ children }) => {
       const response = await fetch(url, options);
       if (!response.ok) throw new Error(`Un error ocurred ${token.statusText}`);
       const { token } = await response.json();
-      window.localStorage.setItem('token', token);
+      window.localStorage.setItem("token", token);
       await getUser(token);
-      navigate('/account');
+      navigate("/account");
     } catch (error) {
       setError(error.message);
       setIsLoading(false);

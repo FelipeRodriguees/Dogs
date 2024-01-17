@@ -1,35 +1,34 @@
-import styles from './CreateNewPost.module.css';
-import Input from '../../../components/forms/input/Input';
-import Button from '../../../components/forms/button/Button';
-import useForm from '../../../utils/hooks/useForm';
-import useFetch from '../../../utils/hooks/useFetch';
-import { useEffect, useState } from 'react';
-import { NEW_POST } from '../../../services/api';
-import { useNavigate } from 'react-router-dom';
+import styles from "./CreateNewPost.module.css";
+import Input from "../../../components/forms/input/Input";
+import Button from "../../../components/forms/button/Button";
+import useForm from "../../../utils/hooks/useForm";
+import useFetch from "../../../utils/hooks/useFetch";
+import { useEffect, useState } from "react";
+import { NEW_POST } from "../../../services/api";
+import { useNavigate } from "react-router-dom";
 
 const CreateNewPost = () => {
   const name = useForm(true);
-  const weight = useForm('number');
-  const age = useForm('number');
+  const weight = useForm("number");
+  const age = useForm("number");
   const [img, setImg] = useState({});
   const { data, isLoading, error, request } = useFetch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (data) navigate('/account');
+    if (data) navigate("/account");
   }, [data, navigate]);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('img', img.raw);
-    formData.append('nome', name.value);
-    formData.append('peso', weight.value);
-    formData.append('idade', age.value);
+    formData.append("img", img.raw);
+    formData.append("nome", name.value);
+    formData.append("peso", weight.value);
+    formData.append("idade", age.value);
 
-    const token = window.localStorage.getItem('token');
-    console.log(formData);
+    const token = window.localStorage.getItem("token");
     const { url, options } = NEW_POST(formData, token);
 
     request(url, options);

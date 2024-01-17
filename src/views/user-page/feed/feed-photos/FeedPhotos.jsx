@@ -6,17 +6,24 @@ import ErrorMessage from "../../../../components/helper/ErrorMessage.jsx";
 import Loader from "../../../../components/helper/loader/Loader.jsx";
 import styles from "./FeedPhotos.module.css";
 
-const FeedPhotos = ({ setModalPhoto }) => {
+const FeedPhotos = ({ user, page, setModalPhoto, setInfinite }) => {
   const { data, isLoading, error, request } = useFetch();
 
   useEffect(() => {
     async function getPhotos() {
-      const { url, options } = FIND_POSTS({ page: 1, totalItems: 6, user: 0 });
-      const { json } = await request(url, options);
+      const { url, options } = FIND_POSTS({
+        page: page,
+        totalItems: 6,
+        user: user,
+      });
+
+      const { response, json } = await request(url, options);
+
+      if (response && response.ok && json.length < 6) setInfinite(false);
     }
 
     getPhotos();
-  }, [request]);
+  }, [request, user, page, setInfinite]);
 
   if (error) return <ErrorMessage error={error} />;
 
