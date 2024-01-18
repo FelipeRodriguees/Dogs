@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
-import Button from '../../../components/forms/button/Button';
-import Input from '../../../components/forms/input/Input';
-import useForm from '../../../utils/hooks/useForm';
-import { UserContext } from '../../../UserContext';
-import { useContext } from 'react';
-import ErrorMessage from '../../../components/helper/ErrorMessage';
-import styles from './LoginForm.module.css';
-import stylesButton from '../../../components/forms/button/Button.module.css';
+import { Link } from "react-router-dom";
+import Button from "../../../components/forms/button/Button";
+import Input from "../../../components/forms/input/Input";
+import useForm from "../../../utils/hooks/useForm";
+import { UserContext } from "../../../UserContext";
+import { useContext } from "react";
+import ErrorMessage from "../../../components/helper/ErrorMessage";
+import styles from "./LoginForm.module.css";
+import stylesButton from "../../../components/forms/button/Button.module.css";
 
 const LoginForm = () => {
   const { userLogin, error, isLoading } = useContext(UserContext);
@@ -31,7 +31,7 @@ const LoginForm = () => {
         ) : (
           <Button>Entrar</Button>
         )}
-        <ErrorMessage error={error} />
+        <ErrorMessage error={error && "Dados incorretos."} />
       </form>
       <Link className={styles.recover} to="/login/recover-password">
         Recuperar senha
