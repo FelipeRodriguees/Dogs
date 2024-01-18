@@ -13,25 +13,27 @@ import NotFound from "./views/not-found/NotFound";
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <BrowserRouter>
         <UserStorage>
           <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login/*" element={<Login />} />
-            <Route
-              path="account/*"
-              element={
-                <LoginRouterMenager>
-                  <UserPage />
-                </LoginRouterMenager>
-              }
-            />
-            <Route path="photo/:id" element={<Photo />} />
-            <Route path="profile/:user" element={<Profile />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <main className="appBody">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login/*" element={<Login />} />
+              <Route
+                path="account/*"
+                element={
+                  <LoginRouterMenager>
+                    <UserPage />
+                  </LoginRouterMenager>
+                }
+              />
+              <Route path="photo/:id" element={<Photo />} />
+              <Route path="profile/:user" element={<Profile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
           <Footer />
         </UserStorage>
       </BrowserRouter>

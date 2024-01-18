@@ -21,6 +21,7 @@ export const UserStorage = ({ children }) => {
     setIsLoading(false);
     setIsLogged(false);
     window.localStorage.removeItem("token");
+    navigate("/login");
   }, []);
 
   useEffect(() => {
