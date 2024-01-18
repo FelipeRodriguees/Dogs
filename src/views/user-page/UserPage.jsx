@@ -6,6 +6,7 @@ import CreateNewPost from "./create-new-post/CreateNewPost";
 import UserAnalytics from "./user-analytics/UserAnalytics";
 import { UserContext } from "../../UserContext";
 import NotFound from "../not-found/NotFound";
+import Head from "../../components/helper/Head";
 
 const UserPage = () => {
   const { data } = useContext(UserContext);
@@ -13,6 +14,10 @@ const UserPage = () => {
   return (
     <section className="container">
       <UserHeader />
+      <Head
+        title="Minhas Fotos"
+        description="Fotos do usuário logado do site Dogs."
+      />
       <Routes>
         <Route path="/" element={<Feed user={data.id} />} />
         <Route path="new-post" element={<CreateNewPost />} />

@@ -5,6 +5,7 @@ import { FIND_PHOTO } from "../../services/api";
 import ErrorMessage from "../../components/helper/ErrorMessage";
 import Loader from "../../components/helper/loader/Loader";
 import PhotoContent from "./photo-content/PhotoContent";
+import Head from "../../components/helper/Head";
 
 const Photo = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const Photo = () => {
   if (data)
     return (
       <section className="container mainContainer">
+        <Head title={data.photo.title} description="" />
         <PhotoContent single={true} data={data} />
       </section>
     );

@@ -6,6 +6,7 @@ import useFetch from "../../../utils/hooks/useFetch";
 import { useEffect, useState } from "react";
 import { NEW_POST } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
+import Head from "../../../components/helper/Head";
 
 const CreateNewPost = () => {
   const name = useForm(true);
@@ -43,6 +44,10 @@ const CreateNewPost = () => {
 
   return (
     <section className={`${styles.photoPost} animeLeft`}>
+      <Head
+        title="Novo Post"
+        description="Novo post do usuário logado do site Dogs."
+      />
       <form onSubmit={handleSubmit}>
         <Input
           label="Nome"
