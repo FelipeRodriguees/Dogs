@@ -1,11 +1,14 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import DogsIconSvg from "../../assets/dogs-footer.svg?react";
+import IconComponent from "../../components/helper/IconComponent";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <DogsIconSvg />
+      <IconComponent
+        iconPath={"./assets/dogs-footer.svg"}
+        iconAlt={"Ícone do rodapé do site Dogs"}
+      />
       <p>Dogs. Alguns direitos reservados.</p>
     </footer>
   );

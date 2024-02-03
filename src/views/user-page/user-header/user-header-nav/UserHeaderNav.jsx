@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { UserContext } from '../../../../UserContext';
-import MyPhotosSvg from '../../../../assets/feed.svg?react';
-import AnalyticsSvg from '../../../../assets/estatisticas.svg?react';
-import CreateNewPostSvg from '../../../../assets/adicionar.svg?react';
-import LogoutSvg from '../../../../assets/sair.svg?react';
-import styles from './UserHeaderNav.module.css';
-import useMedia from '../../../../utils/hooks/useMedia';
+import React, { useContext, useEffect, useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../../../../UserContext";
+import styles from "./UserHeaderNav.module.css";
+import useMedia from "../../../../utils/hooks/useMedia";
+import IconComponent from "../../../../components/helper/IconComponent";
 
 const UserHeaderNav = () => {
   const { userLogout } = useContext(UserContext);
   const [isHiddenMobileMenu, setIsHiddenMobileMenu] = useState(false);
-  const isMobile = useMedia('(max-width: 40rem)');
+  const isMobile = useMedia("(max-width: 40rem)");
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
@@ -21,7 +18,7 @@ const UserHeaderNav = () => {
 
   function handleLogout() {
     userLogout();
-    navigate('/login');
+    navigate("/login");
   }
 
   return (
@@ -42,20 +39,32 @@ const UserHeaderNav = () => {
         }`}
       >
         <NavLink to="/account" end>
-          <MyPhotosSvg />
-          {isMobile && 'Minhas Fotos'}
+          <IconComponent
+            iconPath={"./assets/feed.svg"}
+            iconAlt={"Dogs - Ícone de feed"}
+          />
+          {isMobile && "Minhas Fotos"}
         </NavLink>
         <NavLink to="/account/analytics">
-          <AnalyticsSvg />
-          {isMobile && 'Estatísticas'}
+          <IconComponent
+            iconPath={"./assets/estatisticas.svg"}
+            iconAlt={"Dogs - Ícone de estatísticas"}
+          />
+          {isMobile && "Estatísticas"}
         </NavLink>
         <NavLink to="/account/new-post">
-          <CreateNewPostSvg />
-          {isMobile && 'Adicionar Foto'}
+          <IconComponent
+            iconPath={"./assets/adicionar.svg"}
+            iconAlt={"Dogs - Ícone de adicionar foto"}
+          />
+          {isMobile && "Adicionar Foto"}
         </NavLink>
         <button onClick={userLogout}>
-          <LogoutSvg />
-          {isMobile && 'Sair'}
+          <IconComponent
+            iconPath={"./assets/sair.svg"}
+            iconAlt={"Dogs - Ícone de sair"}
+          />
+          {isMobile && "Sair"}
         </button>
       </nav>
     </>

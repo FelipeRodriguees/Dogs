@@ -1,5 +1,4 @@
 import { useState } from "react";
-import SendButtonSvg from "../../../../assets/Enviar.svg?react";
 import useFetch from "../../../../utils/hooks/useFetch";
 import { SEND_COMMENT } from "../../../../services/api";
 import ErrorMessage from "../../../../components/helper/ErrorMessage";
@@ -37,7 +36,10 @@ const PhotoCommentsForm = ({ id, setComments, single }) => {
       />
 
       <button className={styles.sendButton}>
-        <SendButtonSvg />
+        <IconComponent
+          iconPath={"./assets/Enviar.svg"}
+          iconAlt={"Dogs - Ícone de enviar comentário"}
+        />
       </button>
 
       <ErrorMessage error={error} />
